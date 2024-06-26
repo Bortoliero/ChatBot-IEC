@@ -35,6 +35,7 @@ pipeline {
     }
 
     environment{
-        PATH = "C:\\Windows\\System32;C:\\Programs\\Python;C:\\Programs\\Python\\Scripts;${env.PATH}"
+        // PATH = "C:\\Windows\\System32;C:\\Programs\\Python;C:\\Programs\\Python\\Scripts;${env.PATH}"
+        PATH = "C:\\Windows\\System32;C:\\Users\\joaoo\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\joaoo\\AppData\\Local\\Programs\\Python\\Python310\\Scripts;${env.PATH}"
     }
 }
