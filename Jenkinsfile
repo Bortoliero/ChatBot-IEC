@@ -1,22 +1,17 @@
 pipeline {
-    agent {
-        docker {
-            image 'devopsjourney1/myjenkinsagents:python'
-            label 'docker-agent-python' 
-            
-        }
-    }
+    agent any
+
     stages {
         stage('Preparação do Ambiente') {
             steps {
-                
-                echo 'ja instalado'
+                bat 'python -m venv venv'
+                bat '.\\venv\\Scripts\\pip install -r requisitos.txt'
             }
         }
 
         stage('Execução do Teste Levenshtein') {
             steps {
-                sh 'python3 levenshtein_teste.py'
+                bat '.\\venv\\Scripts\\python -m unittest levenshtein_teste.py'
             }
         }
 
@@ -34,8 +29,12 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                sh 'python chat_bot.py'
+                bat '.\\venv\\Scripts\\python chat_bot.py'
             }
         }
+    }
+
+    environment{
+        PATH = "C:\\Windows\\System32;C:\\Programs\\Python;C:\\Programs\\Python\\Scripts;${env.PATH}"
     }
 }
