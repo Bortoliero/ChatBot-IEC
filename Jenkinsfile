@@ -1,17 +1,18 @@
 pipeline {
     agent any
-
+    environment {
+        PATH = "C:\\Windows\\System32;C:\\Users\\joaoo\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\joaoo\\AppData\\Local\\Programs\\Python\\Python310\\Scripts;${env.PATH}"
+    }
     stages {
         stage('Preparação do Ambiente') {
             steps {
-                bat 'python -m venv venv'
-                bat '.\\venv\\Scripts\\pip install -r requisitos.txt'
+                echo 'ja instalado'
             }
         }
 
         stage('Execução do Teste Levenshtein') {
             steps {
-                bat '.\\venv\\Scripts\\python -m unittest levenshtein_teste.py'
+                bat 'python levenshtein_teste.py'
             }
         }
 
@@ -29,13 +30,8 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                bat '.\\venv\\Scripts\\python chat_bot.py'
+                bat 'python chat_bot.py'
             }
         }
-    }
-
-    environment{
-        // PATH = "C:\\Windows\\System32;C:\\Programs\\Python;C:\\Programs\\Python\\Scripts;${env.PATH}"
-        PATH = "C:\\Windows\\System32;C:\\Users\\joaoo\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\joaoo\\AppData\\Local\\Programs\\Python\\Python310\\Scripts;${env.PATH}"
     }
 }
