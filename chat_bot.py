@@ -31,9 +31,11 @@ if __name__ == "__main__":
     #     input("Digite o limiar de distância para considerar uma pergunta semelhante:")
     # )
     limiar_distancia = 20
-    while True:
-        pergunta = input("Faça uma pergunta:").lower()
-        if pergunta == "sair":
-            break
-        resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-        print("Resposta:", resposta)
+    # while True:
+    # pergunta = input("Faça uma pergunta:").lower()
+    pergunta = "em que ano o brasil foi descoberto?"
+    print(f"\nPergunta: {pergunta}")
+    # if pergunta == "sair":
+    #     break
+    resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+    print("Resposta:", resposta)
